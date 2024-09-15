@@ -272,18 +272,20 @@ contactForm.addEventListener('submit', function(event) {
     // Get form values
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
 
     // Prepare template parameters
     const templateParams = {
         from_name: name,
         from_email: email,
+        message: message
     };
 
-    emailjs.sendForm('service_iqdgw8i', 'template_oa3m7wr', templateParams)
-        .then(function() {
-            console.log('SUCCESS!');
+    emailjs.send('service_iqdgw8i', 'template_oa3m7wr', templateParams)
+        .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
             alert('Thank you for your message! We will get back to you soon.');
-            document.getElementById('contactForm').reset();
+            contactForm.reset();
         }, function(error) {
             console.log('FAILED...', error);
             alert('Oops! There was an error sending your message. Please try again later.');
