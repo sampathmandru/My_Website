@@ -272,13 +272,11 @@ contactForm.addEventListener('submit', function(event) {
     // Get form values
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
 
     // Prepare template parameters
     const templateParams = {
         from_name: name,
         from_email: email,
-        message: message
     };
 
     emailjs.sendForm('service_iqdgw8i', 'template_oa3m7wr', templateParams)
